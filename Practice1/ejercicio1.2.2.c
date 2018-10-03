@@ -16,29 +16,30 @@
 	 
 	 };
  
- void *codigo_del_hilo(struct valor *v){
+ void *codigo_del_hilo(void *v){
 	 int i;
-	 for (i = 0; i < v->veces; i++){
-		 printf("%c",v->id);
+	 struct valor vaux = *(struct valor*)v;
+	 for (i = 0; i < vaux.veces; i++){
+		 printf("%c",vaux.id);
 		 }
-	 printf("\n");
-	 pthread_exit(v->id);
+	 
+	 pthread_exit(v);
 	 }
 	 
  int main(){
 	 int h;
 	 pthread_t hilos[NUM_HILOS];
 	 
-	 struct valor v[NUM_HILOS];
-	 v[0].veces = 50;
+	 struct valor v[NUM_HILOS] = {{50,'A'},{100,'B'},{150,'C'}};
+	 /*v[0].veces = 50;
 	 v[0].id = 'A';
 	 v[1].veces = 100;
 	 v[1].id = 'B';
 	 v[2].veces = 150;
-	 v[2].id = 'C';
+	 v[2].id = 'C';*/
 	 
 	 int error;
-	 char *salida;
+	 struct valor *salida;
 	 
 	 for (h = 0; h <NUM_HILOS; h++){
 		 error = pthread_create(&hilos[h],NULL, codigo_del_hilo, &v[h]);
@@ -54,7 +55,7 @@
 			 fprintf(stderr, "Error: %d: %s\n", error, strerror(error));
 			 }
 		 else{
-			 printf("Hilo %c terminado\n", salida);
+			 printf("\nHilo %c terminado", (char) (*salida).id);
 			 }
 		 }
 	 

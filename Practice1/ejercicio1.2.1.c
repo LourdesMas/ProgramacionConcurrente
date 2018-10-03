@@ -11,8 +11,7 @@
 // define una macro cuyo valor no podrá ser cambiado durante la ejecución
 // del codigo y que representa el número de hilos a utilizar
 #define NUM_HILOS 5
-//Variable global que aumentará junto el numero de veces que se repite el bucle
-// for de la función codigo_del_hilo, cada hilo que itere una vez sobre el for la aumentará en 1
+//Variable global 
 int I = 0;
 
 // Función que devuelve puntero a void, apunta a una posición en memoria que
@@ -21,8 +20,10 @@ int I = 0;
 // a int en el printf, lo que es necesario para poder utilizar este puntero genérico
 // Esta función lo que realiza es, ejecutar el for 50 veces, este for muestra 
 // por pantalla el identificado del hilo el número de repetición en el bucle
-// y el valor de I ademas de aumentar este último en 1.
-// finalmente termina el hilo y devuelve un valor a traves de un puntero a void
+// y el valor de I ademas de aumentar este último en 1 el numero de veces que se repite el bucle
+// for de la función codigo_del_hilo, cada hilo que itere una vez sobre el for la aumentará en 1
+// llegando hasta 250, 50 por cada hilo
+// Cuando termina el hilo de ejecutar la función, devuelve un valor a traves de un puntero a void
 // que está disponible para otro hilo en el mismo proceso que llame a pthread_join
 void *codigo_del_hilo(void *id){
 	int i;
@@ -79,6 +80,7 @@ int main(){
 
 // Ambos programas realizan la misma tarea, uno utilizando 5 procesos y otro usando
 // 5 hilos.
+// Las funciones pthread_exit ypthread_join son equivalentes a exit y wait en el uso de procesos 
 // La salida de ambos programas es la misma, excepto para la variable global I,
 // la razón de esta diferencia se explica a continuación: 
 // el programa que trabaja con procesos utiliza 5 procesos distintos para repartirse
