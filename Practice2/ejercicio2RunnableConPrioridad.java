@@ -20,7 +20,7 @@ public class ejercicio2RunnableConPrioridad implements Runnable{
 			ejercicio2RunnableConPrioridad a = new ejercicio2RunnableConPrioridad(palabras[i]);
 			
 			hilo = new Thread(a);
-			if (i==1) {
+			if (i==0) {
 
 				hilo.setPriority(1);
 			}

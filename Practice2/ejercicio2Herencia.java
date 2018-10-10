@@ -20,6 +20,7 @@ public class ejercicio2Herencia extends Thread {
 		Thread hilo;
 		for (int i = 0; i < 2; i++){
 			hilo = new Thread(new ejercicio2Herencia(palabras[i]));
+			
 			hilo.start();
 		}
 		
