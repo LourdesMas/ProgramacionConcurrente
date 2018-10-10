@@ -2,11 +2,11 @@
 * En el main crearemos dos hilos de ese tipo inicializados con dos palabras diferentes y
 * los lanzaremos para que se ejecuten a la vez
 */
-public class ejercicio2Herencia implements Runnable{
+public class ejercicio2InterfaceRunnable implements Runnable{
 
 	String palabra;
 
-	Asignaciones(String palabraNueva){palabra = palabraNueva;}
+	ejercicio2InterfaceRunnable(String palabraNueva){palabra = palabraNueva;}
 	
 	public void run(){
 		for(int i = 0; i < 10; i++){
@@ -21,7 +21,7 @@ public class ejercicio2Herencia implements Runnable{
 		Thread hilo;
 		
 		for(int i = 0; i < 2; i++){
-			Asignaciones a = new Asignaciones(palabras[i]);
+			ejercicio2InterfaceRunnable a = new ejercicio2InterfaceRunnable(palabras[i]);
 			hilo = new Thread(a);
 			hilo.start();
 		}

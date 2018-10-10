@@ -7,7 +7,7 @@ public class ejercicio2Herencia extends Thread {
 
 
 	String palabra;
-	Asignaciones(String palabraNueva){palabra = palabraNueva;}
+	ejercicio2Herencia(String palabraNueva){palabra = palabraNueva;}
 
 	public void run(){
 		for (int i = 0; i < 10; i++){
@@ -19,7 +19,7 @@ public class ejercicio2Herencia extends Thread {
 		String palabras[] = {"Hola","Adiós"};
 		Thread hilo;
 		for (int i = 0; i < 2; i++){
-			hilo = new Thread(new Asignaciones(palabra[i]));
+			hilo = new Thread(new ejercicio2Herencia(palabras[i]));
 			hilo.start();
 		}
 		
